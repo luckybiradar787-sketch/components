@@ -1,0 +1,22 @@
+<div class="table-responsive">
+    <table class="table table-bordered mt-5 text-center ">
+                <thead class="bg-primary">
+                    <tr>
+                        <th>Sr No</th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr *ngFor="let t of employees; let i=index">
+                     <td>{{i+1}}</td>
+                    <td>{{t.id}}</td>
+                    <td>{{t.name}}</td>
+                    <td>{{t.department}}</td>
+                    <td>{{t.salary}}</td>
+                   </tr>
+                </tbody>
+    </table>
+</div>
