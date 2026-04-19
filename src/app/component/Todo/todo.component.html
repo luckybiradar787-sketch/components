@@ -1,0 +1,29 @@
+
+
+
+<h3 class="mt-3"><b>Search Product</b></h3>
+
+<!-- <div class="form-group">
+    <input 
+     [(ngModel)]="searchProduct"
+     #productName
+    type="text" class="form-control">
+</div>
+
+<P 
+*ngIf="searchProduct"
+class="alert alert-info">
+    {{searchProduct}}
+</P> -->
+
+
+<div class="form-group">
+    <input 
+    (input)="onSearch($event)"
+    #productName
+    type="text" class="form-control">
+</div>
+
+<p *ngIf="searchProduct"
+class="alert alert-info">
+{{searchProduct}}</p>
