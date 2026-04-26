@@ -1,0 +1,103 @@
+
+<!-- <h2 class="mt-4 text-center bg-primary">{{isInEditMode ? "Update Student":"Add Student"}}</h2> -->
+
+<div class="container bg-light p-3 rounded">
+ <h2 class="mt-2"><strong>{{isInEditMode ? "Update Student":"Add Student"}}</strong></h2>
+<div class="row mt-3">
+    <div class="col-md-4 ">
+         <mat-card>
+             <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" #name class="form-control">
+        </div>
+         <div class="form-group">
+            <label for="Age">Age</label>
+            <input type="text" #age class="form-control">
+        </div>
+         <div class="form-group">
+            <label for="course">Course</label>
+            <input type="text" #course class="form-control">
+        </div>
+         <div class="form-group">
+            <label for="city">City</label>
+            <input type="text" #city class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="isActive">IsActive</label>
+            <select type="text" #isActive class="form-control">
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        </div>
+       
+
+        <button 
+        *ngIf="!isInEditMode"
+        (click)="onStdAdd()"
+        mat-raised-button color="primary" class="btn-block">Add student</button>
+        <button
+        *ngIf="isInEditMode"
+        (click)="onUpdate()"
+         mat-raised-button color="primary" class="btn-block">Update student</button>
+     </mat-card>
+    </div>
+   
+    <div class="col-md-8 mt-4">
+        <mat-card>
+        <table class="table  table-responsive" *ngIf="stdArr.length>0;else noStudents">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Course</th>
+                    <th>City</th>
+                    <th>IsActive</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let std of stdArr; let i=index; trackBy:trackByStudentoneId">
+                    <td>{{i+1}}</td>
+                    <td>{{std.name}}</td>
+                    <td>{{std.age}}</td>
+                    <td>{{std.course}}</td>
+                    <td>{{std.city}}</td>
+                    <td>
+                        <strong class="badge text-white p-2"
+                        [ngClass]="{
+                            'bg-success':std.isActive,
+                            'bg-danger':!std.isActive
+                        }">
+                        {{std.isActive ? 'Yes':'No'}}
+                       </strong>
+                    </td>
+                    <td>
+                        <!-- <button  mat-raised-button color="primary" class="btn-block">Edit</button> -->
+                         <button
+                         (click)="onEdit(std)"
+                          mat-mini-fab color="primary" >
+                            <mat-icon>edit</mat-icon>
+                         </button>
+                    </td>
+                    <td class="text-center">
+                        <!-- <button 
+                        (click)="onRemove(std.stdId)"
+                         mat-raised-button color="warn" class="btn-block">Remove</button> -->
+                         <button
+                         (click)="onRemove(std.stdId)"
+                          mat-mini-fab color="warn" >
+                            <mat-icon>delete</mat-icon>
+                         </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ng-template #noStudents>
+            <P class="alert alert-info">No Student Data Added Yet !!!</P>
+        </ng-template>
+        </mat-card>
+    </div>
+</div>
+</div>

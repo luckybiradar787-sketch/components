@@ -6,6 +6,7 @@ import { Itodos } from 'src/app/models/todos';
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss']
 })
+
 export class TodosComponent {
 isInEditMode:boolean=false
 editObj !:Itodos
@@ -42,10 +43,7 @@ editObj !:Itodos
 }
 
 @ViewChild('todoControl') todoControl !:ElementRef
-  // constructor() { }
-
-  // ngOnInit(): void {
-  // }
+  
 
   onRemove(id:string){
     console.log(id)
