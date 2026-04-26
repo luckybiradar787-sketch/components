@@ -56,30 +56,62 @@ editId !:string
   ngOnInit(): void {}
 
   onStdAdd(){
-    let stdObj :IStudentone={
-      name:this.name.nativeElement.value,
-      age:this.age.nativeElement.value,
-      course:this.course.nativeElement.value,
-      city:this.city.nativeElement.value,
-      isActive:this.isActive.nativeElement.value,
-      stdId:Date.now().toString()
-    }
-    
-  this.stdArr.unshift(stdObj)
-    
-     this.name.nativeElement.value=''
-     this.age.nativeElement.value=''
-     this.course.nativeElement.value=''
-     this.city.nativeElement.value=''
+  //   let stdObj :IStudentone={
+  //     name:this.name.nativeElement.value,
+  //     age:this.age.nativeElement.value,
+  //     course:this.course.nativeElement.value,
+  //     city:this.city.nativeElement.value,
+  //     isActive:this.isActive.nativeElement.value,
+  //     stdId:Date.now().toString()
 
-    //  this._snackBar.open(`The Student ${stdObj.name} is Added Successfully !!!`,"close",{
-    //   duration:3000,
-    //   horizontalPosition:'left',
-    //   verticalPosition:'top'
+  //   }
+      
+  // this.stdArr.unshift(stdObj)
+    
+  //    this.name.nativeElement.value=''
+  //    this.age.nativeElement.value=''
+  //    this.course.nativeElement.value=''
+  //    this.city.nativeElement.value=''
 
-    //  })
-    this._snackBar.openSnackbar(`The Student ${stdObj.name} is Added Successfully !!!`)
+  //   //  this._snackBar.open(`The Student ${stdObj.name} is Added Successfully !!!`,"close",{
+  //   //   duration:3000,
+  //   //   horizontalPosition:'left',
+  //   //   verticalPosition:'top'
+
+  //   //  })
+  //   this._snackBar.openSnackbar(`The Student ${stdObj.name} is Added Successfully !!!`)
+
+  let name = this.name.nativeElement.value.trim();
+  let age = this.age.nativeElement.value.trim();
+  let course = this.course.nativeElement.value.trim();
+  let city = this.city.nativeElement.value.trim();
+  let isActive = this.isActive.nativeElement.value;
+
+  // 🚫 Prevent empty data
+  if (!name || !age || !course || !city) {
+    this._snackBar.openSnackbar('Please fill all fields properly!');
+    return;
   }
+
+  let stdObj: IStudentone = {
+    name: name,
+    age: age,
+    course: course,
+    city: city,
+    isActive: isActive,
+    stdId: Date.now().toString()
+  };
+
+  this.stdArr.unshift(stdObj);
+
+  // Clear fields
+  this.name.nativeElement.value = '';
+  this.age.nativeElement.value = '';
+  this.course.nativeElement.value = '';
+  this.city.nativeElement.value = '';
+
+  this._snackBar.openSnackbar(`The Student ${stdObj.name} is Added Successfully !!!`);
+   }
 
   trackByStudentoneId(index:number,std:IStudentone){
     return std.stdId
