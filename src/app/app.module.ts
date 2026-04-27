@@ -15,6 +15,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCardModule} from '@angular/material/card';
+import { HomeComponent } from './component/home/home.component';
+import { StudentDetailsComponent } from './component/student-details/student-details.component';
 
 
 
@@ -29,7 +31,10 @@ import {MatCardModule} from '@angular/material/card';
     TableComponent,
     TodoComponent,
     TodosComponent,
-    StudentOneComponent
+    StudentOneComponent,
+    HomeComponent,
+    StudentDetailsComponent,
+  
   ],
   imports: [
     BrowserModule,
